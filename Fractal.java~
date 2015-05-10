@@ -1,0 +1,133 @@
+/*Ny Pham
+ * This class will represent the two-dimensional fractal shape _/\_ 
+ * The first _ and last _ will be represented by line1 and line4, respectively.
+ * The / and \ will be represented by line2 and line3, respectively.*/
+import java.awt.Graphics;
+
+public class Fractal
+{
+  //stores information on line 1 of the fractal.
+  private Line line1;
+  //stores information on line 2 of the fractal.
+  private Line line2;
+  //stores information on line 3 of the fractal.
+  private Line line3;
+  //stores information on line 4 of the fractal.
+  private Line line4;
+  //stores information on fractal 1*/
+  private Fractal fractal1;
+  //stores information on fractal 2*/
+  private Fractal fractal2;
+  //stores information on fractal 3*/
+  private Fractal fractal3;
+  //stores information on fractal 4*/
+  private Fractal fractal4;
+  
+  /*initilizes the lines and fractals*/
+  public Fractal (Line line, int numberOfFractals)
+  {
+Point A = line.getFirstPoint();
+Point E = line.getSecondPoint();
+Point B = new Point(A.getX() + ((E.getX() - A.getX())/3), A.getY() + ((E.getY() - A.getY())/3));
+Point D = new Point(A.getX() + (((E.getX() - A.getX())* 2) /3), A.getY() + (((E.getY() - A.getY())*2)/3)); 
+Point orgin = new Point(D.getX()-B.getX(),D.getY()-B.getY());
+orgin.rotate(Math.PI / 3); 
+Point C = new Point(orgin.getX() + B.getX(), orgin.getY() + B.getY()); 
+line1 = new Line(A, B); 
+line2 = new Line(B, C);
+line3 = new Line(C, D); 
+line4 = new Line(D,E);
+    if (numberOfFractals > 1)
+    { 
+      fractal1 = new Fractal(line1, numberOfFractals - 1);
+      fractal2 = new Fractal(line2, numberOfFractals - 1);
+      fractal3 = new Fractal(line3, numberOfFractals - 1);
+      fractal4 = new Fractal(line4, numberOfFractals - 1);
+    }
+  }
+  
+  /*returns line 1 of the fractal*/
+  public Line getLine1()
+  {
+    return line1;
+  }
+  
+  /*returns line 2 of the fractal*/
+  public Line getLine2()
+  {
+    return line2;
+  }
+  
+  /*returns line 3 of the fractal*/
+  public Line getLine3()
+  {
+    return line3;
+  }
+  
+  /*returns line 4 of the fractal*/
+  public Line getLine4()
+  {
+    return line4;
+  }
+  
+  /*returns fractal 1 of the fractal*/
+  public Fractal getFractal1()
+  {
+    return fractal1;
+  }
+  
+  /*returns fractal 2 of the fractal*/
+  public Fractal getFractal2()
+  {
+    return fractal2;
+  }
+  
+  /*returns fractal 3 of the fractal*/
+  public Fractal getFractal3()
+  {
+    return fractal3;
+  }
+  
+  /*returns fractal 4 of the fractal*/
+  public Fractal getFractal4()
+  {
+    return fractal4;
+  }
+  
+  /*draws the fractal formed by the constructor*/
+  public void draw (Graphics graphics)
+  {
+    if(fractal1 != null)
+    {
+      getFractal1().draw(graphics);
+    }
+    else
+    {
+      getLine1().draw(graphics);
+    }
+    if(fractal2 != null)
+    {
+      getFractal2().draw(graphics);
+    }
+    else
+    {
+      getLine2().draw(graphics);
+    }
+    if(fractal3 != null)
+    {
+      getFractal3().draw(graphics);
+    }
+    else
+    {
+      getLine3().draw(graphics);
+    }
+    if(fractal4 != null)
+    {
+      getFractal4().draw(graphics);
+    }
+    else
+    {
+      getLine4().draw(graphics);
+    }
+  }
+}

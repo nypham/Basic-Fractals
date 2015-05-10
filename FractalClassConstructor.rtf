@@ -1,0 +1,25 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1344\cocoasubrtf720
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+\margl1440\margr1440\vieww23900\viewh5980\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\f0\fs24 \cf0 public Fractal (Line line, int numberOfFractals)\
+  \{\
+    line1 = new Line(new Point(line.getFirstPoint().getX(), line.getFirstPoint().getY()), new Point(((line.getSecondPoint().getX() - line.getFirstPoint().getX()) / 3) + line.getFirstPoint().getX(), ((line.getSecondPoint().getY() - line.getFirstPoint().getY()) / 3) + line.getFirstPoint().getY()));\
+    line4 = new Line(new Point(((line.getSecondPoint().getX() - line.getFirstPoint().getX()) * (2 / 3)) + line.getFirstPoint().getX(), ((line.getSecondPoint().getY() - line.getFirstPoint().getY()) * (2 / 3)) + line.getFirstPoint().getY()), line.getSecondPoint());\
+    //stores the point to be rotated \
+    Point temporaryPoint = new Point (line4.getFirstPoint().getX() - line1.getSecondPoint().getX(), line4.getFirstPoint().getY() - line1.getSecondPoint().getY());\
+    temporaryPoint.rotate(Math.PI / 3);\
+    //stores the point after being rotated and corrected by returning the origin to the original place\
+    Point topPoint = new Point(temporaryPoint.getX() + line1.getSecondPoint().getX(), temporaryPoint.getY() + line1.getSecondPoint().getY());\
+    line2 = new Line(line1.getSecondPoint(), topPoint);\
+    line3 = new Line(topPoint, line4.getFirstPoint());\
+    if (numberOfFractals > 1)\
+    \{ \
+      fractal1 = new Fractal(line1, numberOfFractals - 1);\
+      fractal2 = new Fractal(line2, numberOfFractals - 1);\
+      fractal3 = new Fractal(line3, numberOfFractals - 1);\
+      fractal4 = new Fractal(line4, numberOfFractals - 1);\
+    \}\
+  \}}

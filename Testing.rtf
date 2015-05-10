@@ -1,0 +1,101 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1344\cocoasubrtf720
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+\margl1440\margr1440\vieww10540\viewh10920\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\f0\fs24 \cf0 1. Testing Point class\
+	a) Testing the getX() and getY()method. This method should return the x-coordinate of the point that was declared and initialized.\
+> Point test = new Point(1,2)\
+> test.getX()\
+1\
+> test.getY()\
+2\
+This is correct because the method returns what was initialized by the constructor when the Point was declared. \
+	b) Testing the setX(int x) method. This method should set a new x-coordinate without changing the y-coordinate. I will be using the same test Point from a).\
+> test.setX(3)\
+> test.getX()\
+3\
+> test.getY()\
+2\
+This is correct because the method sets a new x-coordinate, which the getX() method should return from the constructor. \
+	c) Testing setY(int y) method. This method should set a new y-coordinate without changing the x-coordinate. I will be using the same test Point from a).\
+> test.setY(4)\
+> test.getY()\
+4\
+> test.getX()\
+3\
+This is correct because the method sets a new y-coordinate, which the getY() method should return from the constructor. \
+	d) Testing getAngle() method. This method should return the angle between the point and the positive x-axis in radians. The angle will be given as if the the vector from the origin to the point rotates counter-clockwise about the origin. \
+> Point test1 = new Point(1,2)\
+> test1.getAngle()\
+1.1071487177940904\
+> Point test2 = new Point(-1,2)\
+> test2.getAngle()\
+2.0344439357957027\
+> Point test3 = new Point(-1,-2)\
+> test3.getAngle()\
+4.2487413713838835\
+> Point test4 = new Point(1,-2)\
+> test4.getAngle()\
+5.176036589385496\
+> Point test5 = new Point(1,0)\
+> test5.getAngle()\
+0.0\
+> Point test6 = new Point(0,1)\
+> test6.getAngle()\
+1.5707963267948966\
+> Point test7 = new Point(-1,0)\
+> test7.getAngle()\
+3.141592653589793\
+> Point test8 = new Point(0,-1)\
+> test8.getAngle()\
+4.71238898038469\
+This returns are correct because the output radians fall within the proper quadrants that the points were assigned. \
+	e) Testing rotate(double angle) method. This method should rotate the a point by the input angle without significant changes to the radius (due to truncation).\
+> Point test1 = new Point(1,0)\
+> test1.rotate(Math.PI)\
+> test1.getX()\
+-1\
+> test1.getY()\
+0\
+> test1.rotate((Math.PI)/2)\
+> test1.getX()\
+0\
+> test1.getY()\
+-1\
+> Point test2 = new Point(1,2)\
+> test2.rotate((Math.PI)/2)\
+> test2.getX()\
+-2\
+> test2.getY()\
+1\
+> test2.rotate((Math.PI)/2)\
+> test2.getX()\
+-1\
+> test2.getY()\
+-2\
+> test2.rotate((Math.PI)/2)\
+> test2.getX()\
+2\
+> test2.getY()\
+-1\
+> test2.rotate(Math.PI)\
+> test2.getX()\
+-1\
+> test2.getY()\
+1\
+The outputs are correct because they fall into the proper quadrants after rotation. \
+\
+2. Testing Line class\
+	a) Testing getFirstPoint() method. This method should return the location in memory where data for the starting point is stored.\
+> Line test = new Line(1,2,3,4)\
+> test.getFirstPoint()\
+Point@7be0fa53\
+This is correct because this method doesn\'92t return the actual coordinate of the point.\
+	b) Testing setFirstPoint(Point point) method. \
+	c) Testing getSecondPoint() method. This method should return the location in memory where data for the ending point is stored. I will be using the same declared Line from part a).\
+> test.getSecondPoint()\
+Point@1630e535\
+	d) Testing draw(Graphics graphics) method. \
+}

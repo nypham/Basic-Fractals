@@ -1,0 +1,40 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1344\cocoasubrtf720
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+\margl1440\margr1440\vieww22800\viewh11600\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\f0\fs24 \cf0 Point temporaryPoint = new Point ((((line.getSecondPoint().getX() - line.getFirstPoint().getX()) * (2/3)) + line.getFirstPoint().getX()) - line1.getSecondPoint().getX(), (((line.getSecondPoint().getY() - line.getFirstPoint().getY()) * (2/3)) + line.getFirstPoint().getY()) - line1.getSecondPoint().getY());\
+    temporaryPoint.rotate(Math.PI / 3);\
+\
+\
+\
+\
+\
+\
+line1 = new Line(new Point(line.getFirstPoint().getX(), line.getFirstPoint().getY()), new Point(((line.getSecondPoint().getX() - line.getFirstPoint().getX()) / 3) + line.getFirstPoint().getX(), ((line.getSecondPoint().getY() - line.getFirstPoint().getY()) / 3) + line.getFirstPoint().getY()));\
+    line4 = new Line(new Point(((line.getSecondPoint().getX() - line.getFirstPoint().getX()) * (2 / 3)) + line.getFirstPoint().getX(), ((line.getSecondPoint().getY() - line.getFirstPoint().getY()) * (2 / 3)) + line.getFirstPoint().getY()), line.getSecondPoint());\
+    //stores the point to be rotated \
+    Point temporaryPoint = new Point (line1.getSecondPoint().getX() - line4.getFirstPoint().getX(), line1.getSecondPoint().getY() - line4.getFirstPoint().getY());\
+    temporaryPoint.rotate(Math.PI / 3);\
+    //stores the point after being rotated\
+    Point topPoint = new Point(temporaryPoint.getX() + line4.getFirstPoint().getX(), temporaryPoint.getY() + line4.getFirstPoint().getY());\
+    line2 = new Line(new Point(line1.getSecondPoint().getX(), line1.getSecondPoint().getY()), new Point (topPoint.getX(), topPoint.getY()));\
+    line3 = new Line(new Point(topPoint.getX(), topPoint.getY()), new Point ((line.getSecondPoint().getX() - line.getFirstPoint().getX()) * (2 / 3) + line.getFirstPoint().getX(), (line.getSecondPoint().getY() - line.getFirstPoint().getY()) * (2 / 3) + line.getFirstPoint().getY()));\
+\
+\
+\
+\
+\
+\
+Point point1Line1 = line.getFirstPoint();\
+    Point point2Line4 = line.getSecondPoint();\
+    Point point2Line1 = new Point(((point2Line4.getX() - point1Line1.getX()) / 3) + point1Line1.getX(), ((point2Line4.getY() - point1Line1.getY()) / 3) + point1Line1.getY());\
+    Point point1Line4 = new Point(((point2Line4.getX() - point1Line1.getX()) * (2 / 3)) + point1Line1.getX(), ((point2Line4.getY() - point1Line1.getY()) * (2 / 3)) + point1Line1.getY());\
+    Point temporaryPoint = new Point(point1Line4.getX() - point2Line1.getX(), point1Line4.getY() - point2Line1.getY());\
+    temporaryPoint.rotate(Math.PI / 3);\
+    Point fractalPoint = new Point(temporaryPoint.getX() + point2Line1.getX(), temporaryPoint.getY() + point2Line1.getY());\
+    Line line1 = new Line(point1Line1, point2Line1);\
+    Line line2 = new Line(point2Line1, fractalPoint);\
+    Line line3 = new Line(fractalPoint, point1Line4);\
+    Line line4 = new Line(point1Line4, point2Line4);}
